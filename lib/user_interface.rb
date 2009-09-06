@@ -34,6 +34,11 @@ class UserInterface
   end
 
   def print_revealed_board
-    puts "TODO"
+    @mines = [] if @mines.nil?
+    proper_indexes = @mines.collect {|mine| [mine[0] - 1, mine[1] - 1] }
+
+    ms = MineSweeper.new @size, proper_indexes
+    ms.complete
+    puts ms.draw_board
   end
 end
